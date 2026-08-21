@@ -1,41 +1,21 @@
-// ---------- circuit trace scroll signature ----------
-const nodes = document.querySelectorAll('.circuit .node');
-const segs = document.querySelectorAll('.circuit .seg');
-const sections = ['hero', 'projects', 'skills', 'contact'].map(id => {
-  const el = id === 'hero' ? document.querySelector('.hero') : document.getElementById(id);
-  return { id, el };
-});
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = sections.findIndex(s => s.el === entry.target);
-      nodes.forEach((n, i) => n.classList.toggle('active', i <= idx));
-      segs.forEach((s, i) => s.classList.toggle('active', i < idx));
-    }
-  });
-}, { threshold: 0.4 });
-sections.forEach(s => s.el && io.observe(s.el));
-
-// ---------- background music (uses the bundled music.mp3) ----------
+// background music: auto-plays, no on/off button.
+// If the browser blocks audio-with-sound autoplay, start it on first interaction.
 const audio = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
-let playing = false;
 
-musicBtn.addEventListener('click', () => {
-  if (!playing) {
-    audio.play().catch(() => {});
-  } else {
-    audio.pause();
+function tryPlay() {
+  const p = audio.play();
+  if (p && typeof p.catch === 'function') {
+    p.catch(() => {
+      const resume = () => {
+        audio.play().catch(() => {});
+        ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+          window.removeEventListener(evt, resume)
+        );
+      };
+      ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+        window.addEventListener(evt, resume, { once: true, passive: true })
+      );
+    });
   }
-  playing = !playing;
-  musicBtn.classList.toggle('playing', playing);
-});
-
-audio.addEventListener('pause', () => {
-  playing = false;
-  musicBtn.classList.remove('playing');
-});
-audio.addEventListener('play', () => {
-  playing = true;
-  musicBtn.classList.add('playing');
-});
+}
+tryPlay();
