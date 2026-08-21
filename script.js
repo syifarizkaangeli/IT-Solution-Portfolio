@@ -8,11 +8,11 @@ function tryPlay() {
     p.catch(() => {
       const resume = () => {
         audio.play().catch(() => {});
-        ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+        ['click', 'touchstart', 'keydown', 'scroll', 'mousemove', 'pointerdown'].forEach(evt =>
           window.removeEventListener(evt, resume)
         );
       };
-      ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+      ['click', 'touchstart', 'keydown', 'scroll', 'mousemove', 'pointerdown'].forEach(evt =>
         window.addEventListener(evt, resume, { once: true, passive: true })
       );
     });
