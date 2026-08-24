@@ -89,6 +89,11 @@ const CERTIFICATES = [
     category: "Central Course",
   },
   {
+    file: "Sertifikat Webinar Ai Security Syifa Rizkia Angeli.pdf",
+    title: "Webinar: AI Security",
+    category: "Cybersecurity",
+  },
+  {
     file: "Sertifikat_Mandarin_Conversation_Kunkwan.pdf",
     title: "Mandarin Conversation",
     category: "Kunkwan",
@@ -171,7 +176,7 @@ const CERTIFICATES = [
     const el = document.createElement("iframe");
     el.loading = "lazy";
     el.title = cert.title;
-    el.src = `certificates/${cert.file}#toolbar=0&navpanes=0&scrollbar=0`;
+    el.src = `certificates/${encodeURIComponent(cert.file)}#toolbar=0&navpanes=0&scrollbar=0`;
 
     preview.insertBefore(el, placeholder);
   }
@@ -226,7 +231,7 @@ const CERTIFICATES = [
         return;
       }
       window.open(
-        `certificates/${CERTIFICATES[index].file}`,
+        `certificates/${encodeURIComponent(CERTIFICATES[index].file)}`,
         "_blank",
         "noopener",
       );

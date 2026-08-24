@@ -8,11 +8,23 @@ function tryPlay() {
     p.catch(() => {
       const resume = () => {
         audio.play().catch(() => {});
-        ["click", "touchstart", "keydown", "scroll", "mousemove", "pointerdown"].forEach((evt) =>
-          window.removeEventListener(evt, resume),
-        );
+        [
+          "click",
+          "touchstart",
+          "keydown",
+          "scroll",
+          "mousemove",
+          "pointerdown",
+        ].forEach((evt) => window.removeEventListener(evt, resume));
       };
-      ["click", "touchstart", "keydown", "scroll", "mousemove", "pointerdown"].forEach((evt) =>
+      [
+        "click",
+        "touchstart",
+        "keydown",
+        "scroll",
+        "mousemove",
+        "pointerdown",
+      ].forEach((evt) =>
         window.addEventListener(evt, resume, { once: true, passive: true }),
       );
     });
@@ -71,7 +83,10 @@ const updateCertificateTrain = () => {
 
   const viewportCenter = window.innerHeight / 2;
 
-  const progress = Math.min(Math.max((viewportCenter - rect.top) / rect.height, 0), 1);
+  const progress = Math.min(
+    Math.max((viewportCenter - rect.top) / rect.height, 0),
+    1,
+  );
 
   certTimeline.style.setProperty("--train-progress", progress);
 };
@@ -97,3 +112,40 @@ document.addEventListener("dragstart", function (e) {
     e.preventDefault();
   }
 });
+/* =========================================
+   SCROLL-SPY NAVIGATION
+   Highlights the nav link for whichever
+   section is currently in view.
+========================================= */
+
+const navLinks = document.querySelectorAll("[data-nav]");
+
+if (navLinks.length) {
+  const sections = Array.from(navLinks)
+    .map((link) => document.getElementById(link.dataset.nav))
+    .filter(Boolean);
+
+  const setActiveNav = (id) => {
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.dataset.nav === id);
+    });
+  };
+
+  if ("IntersectionObserver" in window && sections.length) {
+    let current = sections[0].id;
+
+    const spyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            current = entry.target.id;
+          }
+        });
+        setActiveNav(current);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+    );
+
+    sections.forEach((section) => spyObserver.observe(section));
+  }
+}
