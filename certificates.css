@@ -1,381 +1,416 @@
 /* =========================================================
-   CERTIFICATES — ANIMATED CARDS
-   ========================================================= */
+   CERTIFICATES PAGE — HEADER
+========================================================= */
 
-#certificates {
-  position: relative;
-  padding: 130px 0;
-  overflow: hidden;
+.cert-page {
+  padding-top: 170px;
+  padding-bottom: 140px;
 }
 
-.cert-section-head {
-  max-width: 720px;
-  margin-bottom: 70px;
+.cert-page-header {
+  max-width: 680px;
+  margin-bottom: 90px;
 }
 
-.cert-section-head .eyebrow {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  color: var(--accent2);
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  margin-bottom: 15px;
+.cert-page-header .hero-heading {
+  font-size: clamp(52px, 8vw, 96px);
 }
 
-.cert-section-head h2 {
-  font-size: clamp(44px, 7vw, 82px);
-  line-height: .95;
-  letter-spacing: -.04em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.cert-section-head h2 span {
-  font-family: 'Instrument Serif', serif;
+.cert-page-header .script {
+  font-family: "Instrument Serif", serif;
   font-style: italic;
   font-weight: 400;
-  color: var(--text-dim);
-  text-transform: none;
+  font-size: clamp(28px, 4.5vw, 46px);
+  color: #fff;
+  margin-top: 6px;
 }
 
-.cert-section-head p {
-  max-width: 600px;
+.cert-page-lead {
+  margin-top: 24px;
   color: var(--text-dim);
   font-size: 16px;
+  line-height: 1.8;
+  max-width: 620px;
 }
 
+/* =========================================================
+   3D CAROUSEL — STAGE
+========================================================= */
 
-/* TIMELINE */
-
-.cert-list {
+.cert-carousel {
   position: relative;
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px 0;
 }
 
-.cert-list::before {
-  content: "";
+.cert-stage {
+  position: relative;
+
+  width: 100%;
+  height: 460px;
+
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+
+.cert-track {
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
 
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255,255,255,.18) 8%,
-    rgba(255,255,255,.18) 92%,
-    transparent
-  );
+  inset: 0;
+
+  transform-style: preserve-3d;
 }
 
+/* =========================================================
+   SLIDE
+========================================================= */
 
-/* CARD */
+.cert-slide {
+  position: absolute;
 
-.cert-card {
-  position: relative;
+  top: 50%;
+  left: 50%;
 
-  width: calc(50% - 70px);
-  margin-bottom: 80px;
+  width: 320px;
+  height: 420px;
 
-  padding: 28px;
+  margin: -210px 0 0 -160px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,.025)
-    );
-
-  border: 1px solid var(--line);
-  border-radius: 24px;
+  will-change: transform, opacity;
 
   transition:
-    transform .45s cubic-bezier(.2,.8,.2,1),
-    border-color .3s ease,
-    box-shadow .3s ease;
+    transform 0.7s cubic-bezier(0.22, 0.85, 0.28, 1),
+    opacity 0.7s ease;
+
+  cursor: pointer;
+}
+
+.cert-slide.is-active {
+  cursor: default;
+}
+
+.cert-slide-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.cert-slide.is-active .cert-slide-inner {
+  border-color: rgba(124, 92, 255, 0.5);
+
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    0 0 55px rgba(124, 92, 255, 0.16);
+}
+
+/* PDF preview (only loaded near the active slide) */
+
+.cert-slide-preview {
+  position: relative;
+
+  flex: 1;
+
+  background: var(--surface-2);
 
   overflow: hidden;
 }
 
-.cert-card:nth-child(odd) {
-  margin-left: 0;
-}
-
-.cert-card:nth-child(even) {
-  margin-left: calc(50% + 70px);
-}
-
-
-/* glowing background */
-
-.cert-card::before {
-  content: "";
-
+.cert-slide-preview iframe {
   position: absolute;
 
-  width: 180px;
-  height: 180px;
+  inset: 0;
 
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
 
-  background: var(--accent);
-  opacity: 0;
-
-  filter: blur(80px);
-
-  transition: opacity .4s ease;
+  border: none;
 
   pointer-events: none;
 }
 
-.cert-card:nth-child(odd)::before {
-  right: -80px;
-  top: -80px;
-}
-
-.cert-card:nth-child(even)::before {
-  left: -80px;
-  bottom: -80px;
-}
-
-.cert-card:hover::before {
-  opacity: .15;
-}
-
-.cert-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(124,92,255,.45);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.45),
-    0 0 50px rgba(124,92,255,.07);
-}
-
-
-/* CENTER DOT */
-
-.cert-card::after {
-  content: "";
-
+.cert-slide-placeholder {
   position: absolute;
 
-  top: 38px;
+  inset: 0;
 
-  width: 12px;
-  height: 12px;
-
-  border-radius: 50%;
-
-  background: #000;
-  border: 2px solid var(--accent2);
-
-  box-shadow:
-    0 0 0 7px rgba(62,207,110,.08),
-    0 0 20px rgba(62,207,110,.3);
-
-  z-index: 5;
-}
-
-.cert-card:nth-child(odd)::after {
-  right: -77px;
-}
-
-.cert-card:nth-child(even)::after {
-  left: -77px;
-}
-
-.cert-card:hover::after {
-  background: var(--accent2);
-  transform: scale(1.25);
-}
-
-
-/* NUMBER */
-
-.cert-index {
   display: flex;
+
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  margin-bottom: 30px;
+  font-family: "Geist Mono";
 
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
+  font-size: 44px;
+
   color: var(--text-dim);
-  letter-spacing: .1em;
+
+  opacity: 0.35;
 }
 
-.cert-index span:first-child {
-  color: var(--accent2);
-}
+.cert-slide-overlay {
+  position: absolute;
 
+  inset: 0;
 
-/* TITLE */
-
-.cert-card h3 {
-  font-size: clamp(22px, 3vw, 32px);
-  line-height: 1.05;
-  letter-spacing: -.025em;
-  margin-bottom: 14px;
-}
-
-.cert-card p {
-  color: var(--text-dim);
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-
-/* META */
-
-.cert-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
 
-  margin-top: 24px;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  backdrop-filter: blur(2px);
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
 }
 
-.cert-meta span {
-  padding: 7px 11px;
-
-  border: 1px solid var(--line);
-  border-radius: 100px;
-
-  color: var(--text-dim);
-
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
+.cert-slide.is-active .cert-slide-inner:hover .cert-slide-overlay {
+  opacity: 1;
 }
 
-
-/* VIEW PDF */
-
-.cert-view {
+.cert-slide-overlay span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 
-  margin-top: 26px;
-
-  font-family: 'Geist Mono', monospace;
+  font-family: "Geist Mono";
   font-size: 11px;
+  letter-spacing: 0.08em;
+
+  color: #fff;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  padding: 10px 16px;
+
+  border-radius: 100px;
+}
+
+.cert-slide-meta {
+  padding: 16px 18px 18px;
+
+  border-top: 1px solid var(--line);
+}
+
+.cert-slide-index {
+  display: block;
+
+  font-family: "Geist Mono";
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+
+  color: var(--accent2);
+
+  margin-bottom: 8px;
+}
+
+.cert-slide-meta h3 {
+  font-size: 17px;
+  line-height: 1.25;
+
+  letter-spacing: -0.01em;
+
+  margin-bottom: 5px;
+}
+
+.cert-slide-meta p {
+  font-size: 12.5px;
+
+  color: var(--text-dim);
+}
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.cert-carousel-controls {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+
+  margin-top: 44px;
+}
+
+.cert-nav {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  background: var(--surface);
+  border: 1px solid var(--line);
 
   color: var(--text);
 
-  transition: .25s ease;
-}
+  font-size: 16px;
 
-.cert-view span {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 26px;
-  height: 26px;
+  cursor: pointer;
+
+  transition:
+    0.2s border-color,
+    0.2s background,
+    0.2s transform;
+}
+
+.cert-nav:hover {
+  border-color: var(--accent2);
+  background: var(--surface-2);
+
+  transform: translateY(-2px);
+}
+
+.cert-dots {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  max-width: 320px;
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.cert-dots::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-dot {
+  flex: none;
+
+  width: 7px;
+  height: 7px;
 
   border-radius: 50%;
 
-  background: var(--surface-2);
-  border: 1px solid var(--line);
+  background: var(--line);
 
-  transition: .25s ease;
+  cursor: pointer;
+
+  transition:
+    0.25s background,
+    0.25s transform,
+    0.25s width;
 }
 
-.cert-card:hover .cert-view span {
+.cert-dot:hover {
+  background: var(--text-dim);
+}
+
+.cert-dot.is-active {
+  width: 22px;
+
+  border-radius: 100px;
+
   background: var(--accent2);
-  color: #000;
-  transform: rotate(45deg);
+
+  box-shadow: 0 0 12px rgba(62, 207, 110, 0.6);
 }
 
+/* =========================================================
+   AUTOPLAY PROGRESS RAIL
+========================================================= */
 
-/* REVEAL ANIMATION */
+.cert-progress-track {
+  max-width: 320px;
 
-.cert-card {
-  opacity: 0;
-  transform: translateY(50px);
+  margin: 22px auto 0;
+
+  height: 2px;
+
+  border-radius: 100px;
+
+  background: var(--line);
+
+  overflow: hidden;
 }
 
-.cert-card.show {
-  opacity: 1;
-  transform: translateY(0);
+.cert-progress-fill {
+  height: 100%;
+
+  width: 0%;
+
+  background: linear-gradient(to right, var(--accent2), var(--accent));
+
+  border-radius: 100px;
 }
 
-.cert-card:nth-child(odd) {
-  transition:
-    opacity .7s ease,
-    transform .7s cubic-bezier(.2,.8,.2,1),
-    border-color .3s ease,
-    box-shadow .3s ease;
+.cert-progress-fill.is-animating {
+  transition: width linear;
 }
 
-.cert-card:nth-child(even) {
-  transition:
-    opacity .7s .12s ease,
-    transform .7s .12s cubic-bezier(.2,.8,.2,1),
-    border-color .3s ease,
-    box-shadow .3s ease;
-}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-
-/* MOBILE */
-
-@media(max-width:800px) {
-
-  #certificates {
-    padding: 80px 0;
+@media (max-width: 800px) {
+  .cert-page {
+    padding-top: 130px;
   }
 
-  .cert-section-head {
-    margin-bottom: 50px;
+  .cert-page-header {
+    margin-bottom: 60px;
   }
 
-  .cert-list::before {
-    left: 8px;
+  .cert-stage {
+    height: 400px;
+
+    perspective: 1000px;
   }
 
-  .cert-card,
-  .cert-card:nth-child(odd),
-  .cert-card:nth-child(even) {
+  .cert-slide {
+    width: 260px;
+    height: 360px;
 
-    width: calc(100% - 35px);
-
-    margin-left: 35px;
-    margin-bottom: 35px;
-
-    padding: 23px;
-
-    border-radius: 20px;
-  }
-
-  .cert-card::after,
-  .cert-card:nth-child(odd)::after,
-  .cert-card:nth-child(even)::after {
-
-    left: -35px;
-    right: auto;
-
-    top: 30px;
-  }
-
-  .cert-card h3 {
-    font-size: 24px;
+    margin: -180px 0 0 -130px;
   }
 }
 
-
-/* REDUCED MOTION */
-
-@media(prefers-reduced-motion: reduce) {
-
-  .cert-card,
-  .cert-card.show {
-    opacity: 1;
-    transform: none;
-    transition: none;
+@media (max-width: 520px) {
+  .cert-stage {
+    height: 360px;
   }
 
+  .cert-slide {
+    width: 220px;
+    height: 320px;
+
+    margin: -160px 0 0 -110px;
+  }
+
+  .cert-slide-meta h3 {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-slide {
+    transition: opacity 0.3s ease;
+  }
 }

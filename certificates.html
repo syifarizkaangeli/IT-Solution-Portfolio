@@ -1,477 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
 
-<title>Certificates — Syifara</title>
+    <title>Certificates — Syifara</title>
 
-<meta
-  name="description"
-  content="Certificates and continuous learning journey of Syifa Rizka Angeli."
->
+    <meta
+      name="description"
+      content="Certificates and continuous learning journey of Syifa Rizka Angeli."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap"
-  rel="stylesheet"
->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="certificates.css">
-<link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="certificates.css" />
+  </head>
 
-<body>
+  <body>
+    <div class="grain"></div>
 
-<div class="grain"></div>
+    <header>
+      <nav class="wrap">
+        <div class="nav-pill">
+          <a href="index.html">Home</a>
+          <a href="index.html#projects">Work</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="certificates.html" class="active">Certificates</a>
+        </div>
+      </nav>
+    </header>
 
-<header>
-  <nav class="wrap">
-    <div class="nav-pill">
-  <a href="index.html">Home</a>
-  <a href="index.html#projects">Work</a>
-  <a href="index.html#skills">Skills</a>
-  <a href="certificates.html">Certificates</a>
-</div>
-  </nav>
-</header>
+    <main class="cert-page">
+      <div class="wrap">
+        <div class="cert-page-header">
+          <span class="sec-eyebrow">CERTIFICATES / LEARNING JOURNEY</span>
 
+          <h1 class="hero-heading">
+            Always<br />
+            Growing.
+          </h1>
 
-<main class="cert-page">
+          <div class="script">More than one path.</div>
 
-  <div class="wrap">
-
-    <div class="cert-page-header">
-
-      <span class="sec-eyebrow">
-        CERTIFICATES / LEARNING JOURNEY
-      </span>
-
-      <h1>
-        Always<br>
-        Growing.
-      </h1>
-
-      <div class="script">
-        More than one path.
+          <p class="cert-page-lead">
+            My learning journey has never been limited to a single field. I
+            explore mobile application development, web technologies, databases,
+            IoT, software engineering, and other areas that help me become a
+            more complete developer — 18 certificates and counting.
+          </p>
+        </div>
       </div>
 
-      <p style="margin-top:24px;color:var(--text-dim);max-width:650px;">
-        My learning journey has never been limited to a single field.
-        I explore mobile application development, web technologies,
-        databases, IoT, software engineering, and other areas that
-        help me become a more complete developer.
-      </p>
+      <!-- ================= 3D CERTIFICATE CAROUSEL ================= -->
 
-    </div>
-
-
-    <div class="cert-timeline">
-
-
-      <!-- 01 -->
-
-      <article class="cert-timeline-item">
-
-        <div class="cert-story left">
-
-          <div class="story-number">01 / MOBILE DEVELOPMENT</div>
-
-          <h2>
-            Building beyond<br>
-            the screen.
-          </h2>
-
-          <p>
-            Mobile development became one of the areas I continue to
-            explore deeply. I enjoy turning ideas into applications
-            that are useful, practical, and accessible.
-          </p>
-
+      <div class="cert-carousel" id="certCarousel">
+        <div class="cert-stage" id="certStage">
+          <div class="cert-track" id="certTrack"></div>
         </div>
 
-        <div class="cert-timeline-dot"></div>
+        <div class="cert-carousel-controls wrap">
+          <button
+            class="cert-nav cert-nav-prev"
+            id="certPrev"
+            aria-label="Previous certificate"
+          >
+            ←
+          </button>
 
-        <div class="cert-document">
+          <div class="cert-dots" id="certDots"></div>
 
-          <div class="cert-document-card">
-
-            <div class="cert-document-preview">
-
-              <iframe
-                src="certified/certificate-01.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                title="Certificate 01"
-              ></iframe>
-
-              <div class="cert-pointer">
-                SEE<br>
-                CERTIFICATE<br>
-                ↗
-              </div>
-
-            </div>
-
-            <div class="cert-document-meta">
-
-              <span>CERTIFICATE 01</span>
-
-              <h3>Certificate Title One</h3>
-
-              <p>Mobile Application Development</p>
-
-            </div>
-
-          </div>
-
+          <button
+            class="cert-nav cert-nav-next"
+            id="certNext"
+            aria-label="Next certificate"
+          >
+            →
+          </button>
         </div>
 
-      </article>
-
-
-      <!-- 02 -->
-
-      <article class="cert-timeline-item">
-
-        <div class="cert-story">
-
-          <div class="story-number">02 / WEB DEVELOPMENT</div>
-
-          <h2>
-            Learning how<br>
-            things connect.
-          </h2>
-
-          <p>
-            Web development taught me how interfaces, backend systems,
-            databases, and APIs work together to create complete products.
-          </p>
-
+        <div class="cert-progress-track">
+          <div class="cert-progress-fill" id="certProgress"></div>
         </div>
-
-        <div class="cert-timeline-dot"></div>
-
-        <div class="cert-document">
-
-          <div class="cert-document-card">
-
-            <div class="cert-document-preview">
-
-              <iframe
-                src="certified/certificate-02.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                title="Certificate 02"
-              ></iframe>
-
-              <div class="cert-pointer">
-                SEE<br>
-                CERTIFICATE<br>
-                ↗
-              </div>
-
-            </div>
-
-            <div class="cert-document-meta">
-
-              <span>CERTIFICATE 02</span>
-
-              <h3>Certificate Title Two</h3>
-
-              <p>Web Development &amp; Technology</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- 03 -->
-
-      <article class="cert-timeline-item">
-
-        <div class="cert-story left">
-
-          <div class="story-number">03 / SOFTWARE</div>
-
-          <h2>
-            Curiosity<br>
-            drives progress.
-          </h2>
-
-          <p>
-            Every new technology gives me another perspective on solving
-            problems and building better software.
-          </p>
-
-        </div>
-
-        <div class="cert-timeline-dot"></div>
-
-        <div class="cert-document">
-
-          <div class="cert-document-card">
-
-            <div class="cert-document-preview">
-
-              <iframe
-                src="certified/certificate-03.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                title="Certificate 03"
-              ></iframe>
-
-              <div class="cert-pointer">
-                SEE<br>
-                CERTIFICATE<br>
-                ↗
-              </div>
-
-            </div>
-
-            <div class="cert-document-meta">
-
-              <span>CERTIFICATE 03</span>
-
-              <h3>Certificate Title Three</h3>
-
-              <p>Software Development</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- 04 -->
-
-      <article class="cert-timeline-item">
-
-        <div class="cert-story">
-
-          <div class="story-number">04 / TECHNOLOGY</div>
-
-          <h2>
-            Exploring<br>
-            different worlds.
-          </h2>
-
-          <p>
-            From hardware and IoT to software development, I enjoy
-            understanding how different technologies can work together.
-          </p>
-
-        </div>
-
-        <div class="cert-timeline-dot"></div>
-
-        <div class="cert-document">
-
-          <div class="cert-document-card">
-
-            <div class="cert-document-preview">
-
-              <iframe
-                src="certified/certificate-04.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                title="Certificate 04"
-              ></iframe>
-
-              <div class="cert-pointer">
-                SEE<br>
-                CERTIFICATE<br>
-                ↗
-              </div>
-
-            </div>
-
-            <div class="cert-document-meta">
-
-              <span>CERTIFICATE 04</span>
-
-              <h3>Certificate Title Four</h3>
-
-              <p>Technology &amp; Innovation</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- 05 -->
-
-      <article class="cert-timeline-item">
-
-        <div class="cert-story left">
-
-          <div class="story-number">05 / CONTINUOUS LEARNING</div>
-
-          <h2>
-            Never finished.<br>
-            Always learning.
-          </h2>
-
-          <p>
-            Certificates are not the destination. They are milestones
-            that document the things I have explored while continuing
-            to grow as a developer.
-          </p>
-
-        </div>
-
-        <div class="cert-timeline-dot"></div>
-
-        <div class="cert-document">
-
-          <div class="cert-document-card">
-
-            <div class="cert-document-preview">
-
-              <iframe
-                src="certified/certificate-05.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                title="Certificate 05"
-              ></iframe>
-
-              <div class="cert-pointer">
-                SEE<br>
-                CERTIFICATE<br>
-                ↗
-              </div>
-
-            </div>
-
-            <div class="cert-document-meta">
-
-              <span>CERTIFICATE 05</span>
-
-              <h3>Certificate Title Five</h3>
-
-              <p>Professional Development</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- 06 - 18 -->
-
-      <script>
-
-        const certificates = [
-          ["06","Certificate Title Six","Professional Development"],
-          ["07","Certificate Title Seven","Technology & Development"],
-          ["08","Certificate Title Eight","Mobile Application Development"],
-          ["09","Certificate Title Nine","Web Development"],
-          ["10","Certificate Title Ten","Software Engineering"],
-          ["11","Certificate Title Eleven","Technology & Innovation"],
-          ["12","Certificate Title Twelve","Professional Development"],
-          ["13","Certificate Title Thirteen","Programming & Development"],
-          ["14","Certificate Title Fourteen","Digital Technology"],
-          ["15","Certificate Title Fifteen","Software Development"],
-          ["16","Certificate Title Sixteen","Mobile & Web Development"],
-          ["17","Certificate Title Seventeen","Technology"],
-          ["18","Certificate Title Eighteen","Continuous Learning"]
-        ];
-
-        const timeline = document.querySelector(".cert-timeline");
-
-        certificates.forEach((cert, index) => {
-
-          const [number,title,category] = cert;
-
-          const left = index % 2 === 0;
-
-          const item = document.createElement("article");
-
-          item.className = "cert-timeline-item";
-
-          item.innerHTML = `
-
-            <div class="cert-story ${left ? "left" : ""}">
-
-              <div class="story-number">
-                ${number} / ${category.toUpperCase()}
-              </div>
-
-              <h2>
-                ${title}
-              </h2>
-
-              <p>
-                Another milestone in my continuous learning journey,
-                helping me expand my knowledge and become a more
-                versatile developer.
-              </p>
-
-            </div>
-
-            <div class="cert-timeline-dot"></div>
-
-            <div class="cert-document">
-
-              <div class="cert-document-card">
-
-                <div class="cert-document-preview">
-
-                  <iframe
-                    src="certified/certificate-${number}.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                    title="${title}"
-                  ></iframe>
-
-                  <div class="cert-pointer">
-                    SEE<br>
-                    CERTIFICATE<br>
-                    ↗
-                  </div>
-
-                </div>
-
-                <div class="cert-document-meta">
-
-                  <span>CERTIFICATE ${number}</span>
-
-                  <h3>${title}</h3>
-
-                  <p>${category}</p>
-
-                </div>
-
-              </div>
-
-            </div>
-          `;
-
-          timeline.appendChild(item);
-
-        });
-
-      </script>
-
-    </div>
-
-  </div>
-
-</main>
-
-
-<footer>
-  <div class="wrap">
-    <p>SYIFA RIZKA ANGELI'S</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-<script src="certificates.js"></script>
-
-</body>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>SYIFA RIZKA ANGELI'S</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="certificates.js"></script>
+  </body>
 </html>
