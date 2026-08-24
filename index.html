@@ -3,139 +3,1026 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
 <title>Syifara — Mobile App Developer</title>
-<meta name="description" content="Syifara — Mobile App Developer building Android, IoT & full-stack products.">
+
+<meta name="description"
+content="Syifara — Mobile App Developer building Android, IoT, web and full-stack products.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap"
+rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="grain"></div>
 
+<!-- ================= NAVIGATION ================= -->
+
 <header>
   <nav class="wrap">
     <div class="nav-pill">
-      <a href="#">Home</a>
-      <a href="#projects">Work</a>
-      <a href="#skills">Skills</a>
+
+      <a href="#" class="active">Home</a>
+
+      <a href="#projects">
+        Work
+      </a>
+
+      <a href="#skills">
+        Skills
+      </a>
+
+      <a href="#certificates">
+        Certificates
+      </a>
+
     </div>
   </nav>
 </header>
 
-<!-- HERO -->
+
+<!-- ================= HERO ================= -->
+
 <section class="hero">
-  <a href="https://www.linkedin.com/in/syifa-rizka-angeli-099004416" target="_blank" rel="noopener" class="hero-badge">
+
+  <a
+    href="https://www.linkedin.com/in/syifa-rizka-angeli-099004416"
+    target="_blank"
+    rel="noopener"
+    class="hero-badge"
+  >
+
     <span>See my LinkedIn</span>
-    <span class="chevron">→</span>
+
+    <span class="chevron">
+      →
+    </span>
+
   </a>
-  <h1>Syifara</h1>
-  <div class="lead">I craft products for</div>
-  <div class="script">web &amp; mobile apps</div>
+
+
+  <h1>
+    Syifara
+  </h1>
+
+
+  <div class="lead">
+    I craft products for
+  </div>
+
+
+  <div class="script">
+    web &amp; mobile apps
+  </div>
+
 </section>
+
+
+
+<!-- ================= MARQUEE ================= -->
 
 <div class="marquee-wrap">
+
   <div class="marquee">
-    <span>Android</span><span>Kotlin</span><span>React</span><span>Next.js</span>
-    <span>Laravel</span><span>PHP</span><span>Node.js</span><span>Python</span>
-    <span>MySQL</span><span class="accent">ESP32</span><span>IoT</span><span>REST API</span>
-    <span>Game Dev</span><span>POS / Cashier Systems</span><span>Tailwind CSS</span>
-    <span>Android</span><span>Kotlin</span><span>React</span><span>Next.js</span>
-    <span>Laravel</span><span>PHP</span><span>Node.js</span><span>Python</span>
-    <span>MySQL</span><span class="accent">ESP32</span><span>IoT</span><span>REST API</span>
-    <span>Game Dev</span><span>POS / Cashier Systems</span><span>Tailwind CSS</span>
+
+    <span>Android</span>
+    <span>Kotlin</span>
+    <span>React</span>
+    <span>Next.js</span>
+    <span>Laravel</span>
+    <span>PHP</span>
+    <span>Node.js</span>
+    <span>Python</span>
+    <span>MySQL</span>
+
+    <span class="accent">
+      ESP32
+    </span>
+
+    <span>IoT</span>
+    <span>REST API</span>
+    <span>Game Dev</span>
+    <span>POS / Cashier Systems</span>
+    <span>Tailwind CSS</span>
+
+
+    <span>Android</span>
+    <span>Kotlin</span>
+    <span>React</span>
+    <span>Next.js</span>
+    <span>Laravel</span>
+    <span>PHP</span>
+    <span>Node.js</span>
+    <span>Python</span>
+    <span>MySQL</span>
+
+    <span class="accent">
+      ESP32
+    </span>
+
+    <span>IoT</span>
+    <span>REST API</span>
+    <span>Game Dev</span>
+    <span>POS / Cashier Systems</span>
+    <span>Tailwind CSS</span>
+
   </div>
+
 </div>
 
-<!-- PROJECTS — clock face, WhatsApp glowing at the center -->
+
+
+<!-- ================= PROJECTS ================= -->
+
 <section id="projects">
+
   <div class="wrap">
+
     <div class="sec-head">
-      <h2 class="hero-heading">Let's Build<br>Something</h2>
-      <p class="script-line">that actually works.</p>
-      <p>A few things I've shipped — all open source on GitHub.</p>
+
+      <h2 class="hero-heading">
+        Let's Build<br>
+        Something
+      </h2>
+
+      <p class="script-line">
+        that actually works.
+      </p>
+
+      <p>
+        A collection of things I've built across mobile,
+        web, IoT, systems and creative development.
+      </p>
+
     </div>
+
+
+    <!-- PROJECT ORBIT -->
 
     <div class="proj-clock">
+
       <div class="clock-face"></div>
 
-      <a href="https://wa.me/6281233484710" target="_blank" rel="noopener" class="clock-center" aria-label="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39c1.44.79 3.06 1.2 4.71 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.55-3.7 8.25-8.25 8.25a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.36c0-4.55 3.71-8.24 8.27-8.24m-4.54 4.7c-.16 0-.42.06-.64.3s-.85.83-.85 2.02.87 2.35 1 2.51 1.7 2.72 4.19 3.7c2.07.83 2.49.66 2.94.62.45-.04 1.45-.59 1.65-1.16s.2-1.06.14-1.16-.23-.16-.48-.28-1.46-.72-1.69-.8-.39-.12-.56.12-.64.8-.79.97-.29.18-.54.06a6.8 6.8 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.12.25-.29.37-.44.1-.13.15-.24.22-.4a.44.44 0 0 0-.02-.42c-.06-.12-.55-1.36-.76-1.86s-.4-.42-.56-.43z"/></svg>
+
+      <!-- WHATSAPP -->
+
+      <a
+        href="https://wa.me/6281233484710"
+        target="_blank"
+        rel="noopener"
+        class="clock-center"
+        aria-label="Chat on WhatsApp"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          width="28"
+          height="28"
+          fill="currentColor"
+        >
+
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39c1.44.79 3.06 1.2 4.71 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.55-3.7 8.25-8.25 8.25a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.36c0-4.55 3.71-8.24 8.27-8.24m-4.54 4.7c-.16 0-.42.06-.64.3s-.85.83-.85 2.02.87 2.35 1 2.51 1.7 2.72 4.19 3.7c2.07.83 2.49.66 2.94.62.45-.04 1.45-.59 1.65-1.16s.2-1.06.14-1.16-.23-.16-.48-.28-1.46-.72-1.69-.8-.39-.12-.56.12-.64.8-.79.97-.29.18-.54.06a6.8 6.8 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.12.25-.29.37-.44.1-.13.15-.24.22-.4a.44.44 0 0 0-.02-.42c-.06-.12-.55-1.36-.76-1.86s-.4-.42-.56-.43z"/>
+
+        </svg>
+
       </a>
 
-      <a href="https://github.com/syifarizkaangeli/Fingerprint-Absensi" target="_blank" rel="noopener" class="clock-mark mark-1">Fingerprint-Absensi</a>
-      <a href="https://github.com/syifarizkaangeli/Cwipuffy-Bakery-Store" target="_blank" rel="noopener" class="clock-mark mark-2">Cwipuffy Bakery Store</a>
-      <a href="https://github.com/syifarizkaangeli/Zetoro-Janaloka-Technology-team" target="_blank" rel="noopener" class="clock-mark mark-3">Zetoro Janaloka</a>
-      <a href="https://github.com/syifarizkaangeli/Warehouse-Inventory" target="_blank" rel="noopener" class="clock-mark mark-4">Warehouse Inventory</a>
-      <a href="https://github.com/syifarizkaangeli/Vulnerable-Resident-Management" target="_blank" rel="noopener" class="clock-mark mark-5">Resident Management</a>
-      <a href="https://github.com/syifarizkaangeli/Portfolio-Basic-CRUD" target="_blank" rel="noopener" class="clock-mark mark-6">Portfolio CRUD</a>
+
+      <!-- 14 PROJECTS -->
+
+      <a
+        href="https://github.com/syifarizkaangeli/Fingerprint-Absensi"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-1"
+      >
+        Fingerprint Absensi
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Cwipuffy-Bakery-Store"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-2"
+      >
+        Cwipuffy Bakery Store
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Zetoro-Janaloka-Technology-team"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-3"
+      >
+        Zetoro Janaloka
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Warehouse-Inventory"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-4"
+      >
+        Warehouse Inventory
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Vulnerable-Resident-Management"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-5"
+      >
+        Resident Management
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Portfolio-Basic-CRUD"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-6"
+      >
+        Portfolio CRUD
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Syifaudz-Dzikri-Quran"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-7"
+      >
+        Syifaudz Dzikri Quran
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Mobile-App-Dev-Portfolio"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-8"
+      >
+        Mobile App Portfolio
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Android-App"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-9"
+      >
+        Android App
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/POS-Cashier"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-10"
+      >
+        POS Cashier
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/IoT-Project"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-11"
+      >
+        IoT Project
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Game-Development"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-12"
+      >
+        Game Development
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/Web-Development"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-13"
+      >
+        Web Development
+      </a>
+
+
+      <a
+        href="https://github.com/syifarizkaangeli/CRUD-System"
+        target="_blank"
+        rel="noopener"
+        class="clock-mark mark-14"
+      >
+        CRUD System
+      </a>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- SKILLS — two rows of rounded tiles, flowing in opposite directions -->
+
+
+<!-- ================= SKILLS ================= -->
+
 <section id="skills">
+
   <div class="wrap">
+
     <div class="sec-head sec-head-center">
-      <h2>What I Work With</h2>
-      <p>Tools and languages I reach for across mobile, web, and hardware.</p>
+
+      <h2>
+        What I Work With
+      </h2>
+
+      <p>
+        Tools and languages I reach for across mobile,
+        web, and hardware.
+      </p>
+
     </div>
+
   </div>
+
 
   <div class="skills-flow">
+
+    <!-- ROW 1 -->
+
     <div class="flow-row">
+
       <div class="flow-track">
-        <span class="flow-chip"><i>📱</i>Android (Java / Kotlin)</span>
-        <span class="flow-chip"><i>🎨</i>HTML / CSS / JavaScript</span>
-        <span class="flow-chip"><i>⚙️</i>PHP &amp; Laravel</span>
-        <span class="flow-chip"><i>🔌</i>ESP32 / Arduino</span>
-        <span class="flow-chip"><i>🗄️</i>MySQL</span>
-        <span class="flow-chip"><i>🧩</i>Python</span>
-        <span class="flow-chip"><i>🎨</i>React &amp; Tailwind CSS</span>
-        <span class="flow-chip"><i>⚙️</i>REST API</span>
-        <span class="flow-chip"><i>📱</i>Android (Java / Kotlin)</span>
-        <span class="flow-chip"><i>🎨</i>HTML / CSS / JavaScript</span>
-        <span class="flow-chip"><i>⚙️</i>PHP &amp; Laravel</span>
-        <span class="flow-chip"><i>🔌</i>ESP32 / Arduino</span>
-        <span class="flow-chip"><i>🗄️</i>MySQL</span>
-        <span class="flow-chip"><i>🧩</i>Python</span>
-        <span class="flow-chip"><i>🎨</i>React &amp; Tailwind CSS</span>
-        <span class="flow-chip"><i>⚙️</i>REST API</span>
+
+        <span class="flow-chip">
+          <i>📱</i>
+          Android (Java / Kotlin)
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          HTML / CSS / JavaScript
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          PHP &amp; Laravel
+        </span>
+
+        <span class="flow-chip">
+          <i>🔌</i>
+          ESP32 / Arduino
+        </span>
+
+        <span class="flow-chip">
+          <i>🗄️</i>
+          MySQL
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          Python
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          React &amp; Tailwind CSS
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          REST API
+        </span>
+
+
+        <span class="flow-chip">
+          <i>📱</i>
+          Android (Java / Kotlin)
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          HTML / CSS / JavaScript
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          PHP &amp; Laravel
+        </span>
+
+        <span class="flow-chip">
+          <i>🔌</i>
+          ESP32 / Arduino
+        </span>
+
+        <span class="flow-chip">
+          <i>🗄️</i>
+          MySQL
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          Python
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          React &amp; Tailwind CSS
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          REST API
+        </span>
+
       </div>
+
     </div>
+
+
+    <!-- ROW 2 -->
+
     <div class="flow-row">
+
       <div class="flow-track reverse">
-        <span class="flow-chip"><i>📱</i>Firebase</span>
-        <span class="flow-chip"><i>🎨</i>Bootstrap</span>
-        <span class="flow-chip"><i>⚙️</i>Node.js</span>
-        <span class="flow-chip"><i>🔌</i>Fingerprint Sensors</span>
-        <span class="flow-chip"><i>🗄️</i>SQLite</span>
-        <span class="flow-chip"><i>🧩</i>POS / Cashier Systems</span>
-        <span class="flow-chip"><i>🧩</i>Basic Game Dev</span>
-        <span class="flow-chip"><i>📱</i>Firebase</span>
-        <span class="flow-chip"><i>🎨</i>Bootstrap</span>
-        <span class="flow-chip"><i>⚙️</i>Node.js</span>
-        <span class="flow-chip"><i>🔌</i>Fingerprint Sensors</span>
-        <span class="flow-chip"><i>🗄️</i>SQLite</span>
-        <span class="flow-chip"><i>🧩</i>POS / Cashier Systems</span>
-        <span class="flow-chip"><i>🧩</i>Basic Game Dev</span>
+
+        <span class="flow-chip">
+          <i>📱</i>
+          Firebase
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          Bootstrap
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          Node.js
+        </span>
+
+        <span class="flow-chip">
+          <i>🔌</i>
+          Fingerprint Sensors
+        </span>
+
+        <span class="flow-chip">
+          <i>🗄️</i>
+          SQLite
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          POS / Cashier Systems
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          Basic Game Dev
+        </span>
+
+
+        <span class="flow-chip">
+          <i>📱</i>
+          Firebase
+        </span>
+
+        <span class="flow-chip">
+          <i>🎨</i>
+          Bootstrap
+        </span>
+
+        <span class="flow-chip">
+          <i>⚙️</i>
+          Node.js
+        </span>
+
+        <span class="flow-chip">
+          <i>🔌</i>
+          Fingerprint Sensors
+        </span>
+
+        <span class="flow-chip">
+          <i>🗄️</i>
+          SQLite
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          POS / Cashier Systems
+        </span>
+
+        <span class="flow-chip">
+          <i>🧩</i>
+          Basic Game Dev
+        </span>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<footer>
+
+
+<!-- ========================================================= -->
+<!-- ================= CERTIFICATES ========================== -->
+<!-- ========================================================= -->
+
+<section id="certificates" class="certificates-section">
+
   <div class="wrap">
-    <p>SYIFA RIZKA ANGELI'S</p>
+
+    <div class="cert-intro">
+
+      <div class="cert-intro-label">
+        01 — CERTIFICATIONS
+      </div>
+
+
+      <h2 class="hero-heading">
+        Growing<br>
+        Through
+        <span>Practice.</span>
+      </h2>
+
+
+      <p class="cert-intro-text">
+
+        I don't believe development is limited to one technology
+        or one discipline. I continuously explore mobile
+        development, web technologies, systems, IoT and
+        problem solving through hands-on learning.
+
+      </p>
+
+
+      <p class="cert-intro-text">
+
+        Every certificate represents a step in that journey —
+        a small proof of consistency, curiosity and the desire
+        to keep building better things.
+
+      </p>
+
+
+      <div class="cert-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+          Always learning · Always building
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CERTIFICATE TRAIN -->
+
+    <div class="cert-timeline">
+
+
+      <!-- CARD 1 -->
+
+      <article class="cert-item">
+
+        <div class="cert-node">
+
+          <span></span>
+
+        </div>
+
+
+        <div class="cert-content">
+
+          <div class="cert-meta">
+            2026 · 01
+          </div>
+
+
+          <h3>
+            Android &amp; Mobile Development
+          </h3>
+
+
+          <p class="cert-description">
+            Certificate of completion for mobile application
+            development and Android technologies.
+          </p>
+
+        </div>
+
+
+        <div
+          class="cert-card"
+          data-pdf="certified/certificate-01.pdf"
+        >
+
+          <div class="cert-preview">
+
+            <iframe
+              src="certified/certificate-01.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Certificate Preview"
+              loading="lazy"
+            ></iframe>
+
+            <div class="cert-overlay">
+
+              <span>
+                VIEW CERTIFICATE
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="cert-card-bottom">
+
+            <span>
+              Certificate 01
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CARD 2 -->
+
+      <article class="cert-item">
+
+        <div class="cert-node">
+          <span></span>
+        </div>
+
+
+        <div class="cert-content">
+
+          <div class="cert-meta">
+            2026 · 02
+          </div>
+
+
+          <h3>
+            Web Development
+          </h3>
+
+
+          <p class="cert-description">
+            A learning milestone focused on modern web
+            development and practical implementation.
+          </p>
+
+        </div>
+
+
+        <div
+          class="cert-card"
+          data-pdf="certified/certificate-02.pdf"
+        >
+
+          <div class="cert-preview">
+
+            <iframe
+              src="certified/certificate-02.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Certificate Preview"
+              loading="lazy"
+            ></iframe>
+
+            <div class="cert-overlay">
+              <span>VIEW CERTIFICATE</span>
+            </div>
+
+          </div>
+
+
+          <div class="cert-card-bottom">
+
+            <span>
+              Certificate 02
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CARD 3 -->
+
+      <article class="cert-item">
+
+        <div class="cert-node">
+          <span></span>
+        </div>
+
+
+        <div class="cert-content">
+
+          <div class="cert-meta">
+            2026 · 03
+          </div>
+
+
+          <h3>
+            Programming Fundamentals
+          </h3>
+
+
+          <p class="cert-description">
+            Building stronger programming fundamentals through
+            structured learning and continuous practice.
+          </p>
+
+        </div>
+
+
+        <div
+          class="cert-card"
+          data-pdf="certified/certificate-03.pdf"
+        >
+
+          <div class="cert-preview">
+
+            <iframe
+              src="certified/certificate-03.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Certificate Preview"
+              loading="lazy"
+            ></iframe>
+
+            <div class="cert-overlay">
+              <span>VIEW CERTIFICATE</span>
+            </div>
+
+          </div>
+
+
+          <div class="cert-card-bottom">
+
+            <span>
+              Certificate 03
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CARD 4 -->
+
+      <article class="cert-item">
+
+        <div class="cert-node">
+          <span></span>
+        </div>
+
+
+        <div class="cert-content">
+
+          <div class="cert-meta">
+            2026 · 04
+          </div>
+
+
+          <h3>
+            Database &amp; Backend
+          </h3>
+
+
+          <p class="cert-description">
+            Exploring backend architecture, databases and
+            building applications that work beyond the interface.
+          </p>
+
+        </div>
+
+
+        <div
+          class="cert-card"
+          data-pdf="certified/certificate-04.pdf"
+        >
+
+          <div class="cert-preview">
+
+            <iframe
+              src="certified/certificate-04.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Certificate Preview"
+              loading="lazy"
+            ></iframe>
+
+            <div class="cert-overlay">
+              <span>VIEW CERTIFICATE</span>
+            </div>
+
+          </div>
+
+
+          <div class="cert-card-bottom">
+
+            <span>
+              Certificate 04
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CARD 5 -->
+
+      <article class="cert-item">
+
+        <div class="cert-node">
+          <span></span>
+        </div>
+
+
+        <div class="cert-content">
+
+          <div class="cert-meta">
+            2026 · 05
+          </div>
+
+
+          <h3>
+            Technology &amp; Innovation
+          </h3>
+
+
+          <p class="cert-description">
+            Another step in developing a broader perspective
+            across technology, innovation and digital products.
+          </p>
+
+        </div>
+
+
+        <div
+          class="cert-card"
+          data-pdf="certified/certificate-05.pdf"
+        >
+
+          <div class="cert-preview">
+
+            <iframe
+              src="certified/certificate-05.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Certificate Preview"
+              loading="lazy"
+            ></iframe>
+
+            <div class="cert-overlay">
+              <span>VIEW CERTIFICATE</span>
+            </div>
+
+          </div>
+
+
+          <div class="cert-card-bottom">
+
+            <span>
+              Certificate 05
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- ALL CERTIFICATES -->
+
+    <div class="cert-more">
+
+      <a href="certificates.html" class="cert-more-button">
+
+        <span>
+          View all 18 certificates
+        </span>
+
+        <span class="cert-more-arrow">
+          →
+        </span>
+
+      </a>
+
+    </div>
+
   </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="wrap">
+
+    <p>
+      SYIFA RIZKA ANGELI'S
+    </p>
+
+  </div>
+
 </footer>
 
-<!-- background music: autoplays, no on/off control -->
-<audio id="bgMusic" loop autoplay preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
+
+
+<!-- ================= BACKGROUND MUSIC ================= -->
+
+<audio
+  id="bgMusic"
+  loop
+  autoplay
+  preload="auto"
+>
+  <source
+    src="music.mp3"
+    type="audio/mpeg"
+  >
 </audio>
 
+
+
+<!-- ================= CERTIFICATE CURSOR ================= -->
+
+<div id="certCursor">
+
+  <span>
+    SEE
+  </span>
+
+  <strong>
+    CERT
+  </strong>
+
+</div>
+
+
+
 <script src="script.js"></script>
+
 </body>
 </html>
