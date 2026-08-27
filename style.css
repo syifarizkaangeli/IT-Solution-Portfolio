@@ -145,6 +145,18 @@ nav.wrap {
   padding: 6px;
 
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+  max-width: calc(100vw - 32px);
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-pill::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-pill a {
@@ -155,6 +167,10 @@ nav.wrap {
   font-size: 14px;
 
   color: var(--text-dim);
+
+  white-space: nowrap;
+
+  flex: none;
 
   transition:
     color 0.2s ease,
@@ -178,9 +194,17 @@ nav.wrap {
 
 @media (max-width: 650px) {
   .nav-pill a {
-    padding: 8px 11px;
+    padding: 8px 13px;
 
-    font-size: 12px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-pill a {
+    padding: 7px 10px;
+
+    font-size: 10.5px;
   }
 }
 
@@ -236,15 +260,40 @@ nav.wrap {
 
   margin-bottom: 34px;
 
+  box-shadow: 0 0 0 0 rgba(62, 207, 110, 0.45);
+
+  animation: badge-pulse 2.6s ease-out infinite;
+
   transition:
     0.2s border-color,
-    0.2s transform;
+    0.2s transform,
+    0.2s box-shadow;
 }
 
 .hero-badge:hover {
   border-color: var(--accent2);
 
   transform: translateY(-2px);
+
+  animation-play-state: paused;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 26px rgba(62, 207, 110, 0.45);
+}
+
+@keyframes badge-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 110, 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(62, 207, 110, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 110, 0);
+  }
 }
 
 .hero-badge .chevron {
@@ -588,137 +637,174 @@ nav.wrap {
   }
 }
 
+/* =========================================================
+   14 PROJECTS — ORBITING PLANETS (no card, icon only)
+========================================================= */
+
+.proj-orbit {
+  position: absolute;
+
+  inset: 0;
+
+  transform-origin: 50% 50%;
+
+  transform: rotate(var(--start-angle, 0deg));
+
+  animation: orbit-spin var(--orbit-duration, 100s) linear infinite;
+
+  z-index: 3;
+}
+
+.proj-clock:hover .proj-orbit,
+.proj-clock:hover .clock-mark {
+  animation-play-state: paused;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(var(--start-angle, 0deg));
+  }
+
+  to {
+    transform: rotate(calc(var(--start-angle, 0deg) + 360deg));
+  }
+}
+
+@keyframes counter-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--start-angle, 0deg)));
+  }
+
+  to {
+    transform: translate(-50%, -50%)
+      rotate(calc(-1 * (var(--start-angle, 0deg) + 360deg)));
+  }
+}
+
 .clock-mark {
   position: absolute;
 
+  top: 6%;
+  left: 50%;
+
   transform: translate(-50%, -50%);
 
-  z-index: 3;
+  animation: counter-orbit-spin var(--orbit-duration, 100s) linear infinite;
 
   display: flex;
 
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 
+  align-items: center;
+
+  gap: 4px;
+
+  text-decoration: none;
+
+  transition: transform 0.25s ease;
+}
+
+.clock-mark .planet-icon {
+  font-size: 26px;
+  line-height: 1;
+
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+
+  transition:
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+.clock-mark .planet-label {
   font-family: "Geist Mono";
 
-  font-size: 11px;
+  font-size: 8.5px;
 
-  line-height: 1.3;
+  letter-spacing: 0.02em;
 
   color: var(--text-dim);
 
   text-align: center;
 
-  width: 116px;
+  white-space: nowrap;
 
-  padding: 10px 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 
-  background: var(--surface);
-
-  border: 1px solid var(--line);
-
-  border-radius: var(--radius);
-
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-
-  backdrop-filter: blur(6px);
-
-  transition:
-    0.25s color,
-    0.25s transform,
-    0.25s border-color,
-    0.25s box-shadow,
-    0.25s background;
+  transition: color 0.25s ease;
 }
 
 .clock-mark:hover {
+  z-index: 6;
+}
+
+.clock-mark:hover .planet-icon {
+  transform: scale(1.35);
+
+  filter: drop-shadow(0 6px 16px rgba(62, 207, 110, 0.55));
+}
+
+.clock-mark:hover .planet-label {
   color: var(--text);
-
-  background: var(--surface-2);
-
-  border-color: var(--accent2);
-
-  transform: translate(-50%, -50%) scale(1.08);
-
-  box-shadow:
-    0 16px 32px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(62, 207, 110, 0.25),
-    0 0 26px rgba(62, 207, 110, 0.3);
 }
 
 /*
-   14 PROJECT POSITIONS
+   14 ORBIT START ANGLES (evenly spaced, 360/14)
 */
 
-.mark-1 {
-  left: 50%;
-  top: 7%;
+.orbit-1 {
+  --start-angle: 0deg;
 }
 
-.mark-2 {
-  left: 73%;
-  top: 12%;
+.orbit-2 {
+  --start-angle: 25.71deg;
 }
 
-.mark-3 {
-  left: 88%;
-  top: 28%;
+.orbit-3 {
+  --start-angle: 51.43deg;
 }
 
-.mark-4 {
-  left: 93%;
-  top: 50%;
+.orbit-4 {
+  --start-angle: 77.14deg;
 }
 
-.mark-5 {
-  left: 88%;
-  top: 72%;
+.orbit-5 {
+  --start-angle: 102.86deg;
 }
 
-.mark-6 {
-  left: 73%;
-  top: 88%;
+.orbit-6 {
+  --start-angle: 128.57deg;
 }
 
-.mark-7 {
-  left: 50%;
-  top: 93%;
+.orbit-7 {
+  --start-angle: 154.29deg;
 }
 
-.mark-8 {
-  left: 27%;
-  top: 88%;
+.orbit-8 {
+  --start-angle: 180deg;
 }
 
-.mark-9 {
-  left: 12%;
-  top: 72%;
+.orbit-9 {
+  --start-angle: 205.71deg;
 }
 
-.mark-10 {
-  left: 7%;
-  top: 50%;
+.orbit-10 {
+  --start-angle: 231.43deg;
 }
 
-.mark-11 {
-  left: 12%;
-  top: 28%;
+.orbit-11 {
+  --start-angle: 257.14deg;
 }
 
-.mark-12 {
-  left: 27%;
-  top: 12%;
+.orbit-12 {
+  --start-angle: 282.86deg;
 }
 
-.mark-13 {
-  left: 40%;
-  top: 5%;
+.orbit-13 {
+  --start-angle: 308.57deg;
 }
 
-.mark-14 {
-  left: 60%;
-  top: 5%;
+.orbit-14 {
+  --start-angle: 334.29deg;
 }
 
 @media (max-width: 800px) {
@@ -741,14 +827,12 @@ nav.wrap {
     height: 88px;
   }
 
-  .clock-mark {
-    width: 78px;
+  .clock-mark .planet-icon {
+    font-size: 19px;
+  }
 
-    padding: 7px 8px;
-
-    font-size: 8.5px;
-
-    border-radius: 10px;
+  .clock-mark .planet-label {
+    font-size: 7px;
   }
 }
 
@@ -1211,26 +1295,11 @@ nav.wrap {
 
   position: relative;
 
-  cursor: none;
-
-  transition:
-    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+  cursor: default;
 }
 
 .cert-item:nth-child(even) .cert-card {
   justify-self: end;
-}
-
-.cert-card:hover {
-  transform: translateY(-8px) rotate(-1deg);
-
-  border-color: rgba(124, 92, 255, 0.5);
-
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.45),
-    0 0 45px rgba(124, 92, 255, 0.08);
 }
 
 /* =========================================================
@@ -1268,51 +1337,11 @@ nav.wrap {
 }
 
 /*
-   PDF COVER
+   PDF COVER — decorative only, no click affordance
 */
 
 .cert-overlay {
-  position: absolute;
-
-  inset: 0;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.5));
-
-  opacity: 0;
-
-  transition: opacity 0.3s ease;
-
-  pointer-events: none;
-}
-
-.cert-card:hover .cert-overlay {
-  opacity: 1;
-}
-
-.cert-overlay span {
-  font-family: "Geist Mono";
-
-  font-size: 10px;
-
-  letter-spacing: 0.12em;
-
-  color: #fff;
-
-  background: rgba(0, 0, 0, 0.7);
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  backdrop-filter: blur(10px);
-
-  padding: 10px 14px;
-
-  border-radius: 100px;
+  display: none;
 }
 
 /* =========================================================
@@ -1358,97 +1387,18 @@ nav.wrap {
 
   background: var(--surface-2);
 
-  color: var(--text);
+  color: var(--text-dim);
 
   font-size: 12px;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-
-.cert-card:hover .cert-card-bottom span:last-child {
-  transform: rotate(45deg);
-
-  background: var(--accent);
 }
 
 /* =========================================================
    SEE CERT CURSOR
 ========================================================= */
 
-#certCursor {
-  position: fixed;
-
-  left: 0;
-  top: 0;
-
-  width: 82px;
-  height: 82px;
-
-  border-radius: 50%;
-
-  background: #fff;
-
-  color: #000;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  pointer-events: none;
-
-  z-index: 9999;
-
-  opacity: 0;
-
-  transform: translate(-50%, -50%) scale(0.5);
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-
-  mix-blend-mode: normal;
-}
-
-#certCursor.show {
-  opacity: 1;
-
-  transform: translate(-50%, -50%) scale(1);
-}
-
-#certCursor span {
-  font-family: "Geist Mono";
-
-  font-size: 9px;
-
-  letter-spacing: 0.1em;
-
-  line-height: 1;
-}
-
-#certCursor strong {
-  font-size: 13px;
-
-  line-height: 1;
-
-  margin-top: 4px;
-}
-
-#certCursor.clicked {
-  transform: translate(-50%, -50%) scale(0.8);
-}
-
 @media (max-width: 800px) {
-  #certCursor {
-    display: none;
-  }
-
   .cert-card {
-    cursor: pointer;
+    cursor: default;
   }
 }
 

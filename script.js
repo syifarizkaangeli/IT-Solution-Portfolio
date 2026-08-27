@@ -1,22 +1,22 @@
-// background music: auto-plays, no on/off button.
-// If the browser blocks audio-with-sound autoplay, start it on first interaction.
+// Background music: plays immediately on any page, no click required.
+// Browsers always allow autoplay when a media element starts muted, so
+// we start muted (guaranteed to succeed) and unmute right after playback
+// begins — this works without any user interaction in Chrome/Edge/most
+// browsers. As a safety net (older/strict browsers), if audio is still
+// silent after a moment we unmute on the very first user interaction.
 const audio = document.getElementById("bgMusic");
 
-function tryPlay() {
-  const p = audio.play();
-  if (p && typeof p.catch === "function") {
-    p.catch(() => {
-      const resume = () => {
-        audio.play().catch(() => {});
-        [
-          "click",
-          "touchstart",
-          "keydown",
-          "scroll",
-          "mousemove",
-          "pointerdown",
-        ].forEach((evt) => window.removeEventListener(evt, resume));
-      };
+if (audio) {
+  function unmuteSoon() {
+    setTimeout(() => {
+      audio.muted = false;
+    }, 60);
+  }
+
+  function armInteractionFallback() {
+    const resume = () => {
+      audio.muted = false;
+      audio.play().catch(() => {});
       [
         "click",
         "touchstart",
@@ -24,49 +24,34 @@ function tryPlay() {
         "scroll",
         "mousemove",
         "pointerdown",
-      ].forEach((evt) =>
-        window.addEventListener(evt, resume, { once: true, passive: true }),
-      );
-    });
+      ].forEach((evt) => window.removeEventListener(evt, resume));
+    };
+    [
+      "click",
+      "touchstart",
+      "keydown",
+      "scroll",
+      "mousemove",
+      "pointerdown",
+    ].forEach((evt) =>
+      window.addEventListener(evt, resume, { once: true, passive: true }),
+    );
   }
+
+  const p = audio.play();
+
+  if (p && typeof p.then === "function") {
+    p.then(unmuteSoon).catch(armInteractionFallback);
+  } else {
+    unmuteSoon();
+  }
+
+  // Belt-and-suspenders: if for any reason playback is still muted
+  // a couple seconds in, keep the interaction fallback ready too.
+  setTimeout(() => {
+    if (audio.muted || audio.paused) armInteractionFallback();
+  }, 1500);
 }
-tryPlay();
-
-const certCursor = document.getElementById("certCursor");
-
-const certCards = document.querySelectorAll(".cert-card");
-
-document.addEventListener("mousemove", function (e) {
-  certCursor.style.left = e.clientX + "px";
-  certCursor.style.top = e.clientY + "px";
-});
-
-certCards.forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    certCursor.classList.add("show");
-  });
-
-  card.addEventListener("mouseleave", () => {
-    certCursor.classList.remove("show");
-  });
-
-  /*
-    Prevent direct PDF opening.
-    The certificate remains a preview.
-  */
-
-  card.addEventListener("click", () => {
-    const pdf = card.dataset.pdf;
-
-    if (!pdf) return;
-
-    certCursor.classList.add("clicked");
-
-    setTimeout(() => {
-      certCursor.classList.remove("clicked");
-    }, 300);
-  });
-});
 
 /* =========================================
    CERTIFICATE SCROLL TRAIN

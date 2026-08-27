@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+
+    <title>Skills — Syifara</title>
+
+    <meta
+      name="description"
+      content="The technologies Syifara works with, shown through real code pulled from her own GitHub projects."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="skills.css" />
+  </head>
+
+  <body class="page-skills">
+    <div class="grain"></div>
+
+    <header>
+      <nav class="wrap">
+        <div class="nav-pill">
+          <a href="index.html">Home</a>
+          <a href="work.html">Work</a>
+          <a href="skills.html" class="active">Skills</a>
+          <a href="certificates.html">Certificates</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="skills-page">
+      <div class="wrap">
+        <div class="skills-page-header">
+          <span class="sec-eyebrow">SKILLS / STACK</span>
+
+          <h1 class="hero-heading">
+            What I<br />
+            actually use.
+          </h1>
+
+          <div class="script">Straight from my own repos.</div>
+
+          <p class="skills-page-lead">
+            Not just a list of logos — every snippet below is real code, pulled
+            directly from projects in my GitHub. This is what I reach for when
+            I'm actually building something.
+          </p>
+        </div>
+
+        <!-- ================= SKILL: PHP / LARAVEL ================= -->
+
+        <article class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-tag">Backend</span>
+            <h2>PHP &amp; Laravel</h2>
+            <p>
+              My go-to for full-stack web apps — REST APIs, Eloquent models, and
+              clean controller structure.
+            </p>
+          </div>
+
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-filename">FingerprintController.php</span>
+            </div>
+            <pre><code>&lt;?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Siswa;
+use App\Models\Absensi;
+use App\Models\EnrollQueue;
+
+class FingerprintController extends Controller
+{
+    public function getEnrollInQueue()
+    {
+        // Mengambil data enroll queue
+        $enrolls = EnrollQueue::orderBy('created_at', 'desc')-&gt;first();
+
+        if (!$enrolls) {
+            return response()-&gt;json([
+                'success' =&gt; false,
+                'message' =&gt; 'Tidak ada data enroll dalam antrian'
+            ], 400);
+        }
+
+        return response()-&gt;json([
+            'success' =&gt; true,
+            'nisn' =&gt; $enrolls-&gt;nisn
+        ]);
+    }
+
+    public function confirmEnroll(Request $request)
+    {
+        $request-&gt;validate([
+            'nisn' =&gt; 'required|exists:siswa,nisn',
+            'id_fingerprint' =&gt; 'required|integer'
+        ]);
+
+        $siswa = Siswa::where('nisn', $request-&gt;nisn)-&gt;firstOrFail();
+        // ...
+    }
+}</code></pre>
+            <a
+              class="code-source-link"
+              href="https://github.com/syifarizkaangeli/Fingerprint-Absensi"
+              target="_blank"
+              rel="noopener"
+              >View full source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <!-- ================= SKILL: JAVASCRIPT ================= -->
+
+        <article class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-tag">Frontend</span>
+            <h2>JavaScript</h2>
+            <p>
+              Vanilla JS for interactive UIs — state, audio players, and API
+              consumption.
+            </p>
+          </div>
+
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-filename">app.js</span>
+            </div>
+            <pre><code>(function(){
+  "use strict";
+
+  const API = "https://api.alquran.cloud/v1";
+  const FAV_KEY = "syifaudz_favorite_doa";
+
+  const view = document.getElementById('view');
+  const audioEl = document.getElementById('audioEl');
+  const miniPlayer = document.getElementById('miniPlayer');
+
+  let surahList = [];
+  let cache = {}; // number -&gt; {ayahs, editions loaded}
+  let currentSurah = null;
+  let playQueue = [];
+  let playIndex = -1;
+  let isPlayingAll = false;
+
+  // Mode untuk memutar seluruh Al-Qur'an dari Home
+  let isPlayingAllQuran = false;
+  let quranSurahIndex = 0;
+  let quranAyahIndex = 0;
+
+  const LANGS = [
+    {code:'id.indonesian', label:'Bahasa Indonesia'},
+    {code:'en.sahih', label:'English'},
+    {code:'ms.basmeih', label:'Bahasa Melayu'},
+  ];
+})();</code></pre>
+            <a
+              class="code-source-link"
+              href="https://github.com/syifarizkaangeli/Syifaudz-Dzikri-Quran"
+              target="_blank"
+              rel="noopener"
+              >View full source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <!-- ================= SKILL: MYSQL / PDO ================= -->
+
+        <article class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-tag">Database</span>
+            <h2>MySQL</h2>
+            <p>
+              Structured data with PDO — prepared statements, proper error
+              handling.
+            </p>
+          </div>
+
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-filename">config.php</span>
+            </div>
+            <pre><code>&lt;?php
+
+$host = "localhost";
+$dbname = "gudang";
+$username = "root";
+$password = "";
+
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+        $username,
+        $password,
+        [
+            PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES =&gt; false
+        ]
+    );
+} catch (PDOException $e) {
+    die("Connection failed: " . $e-&gt;getMessage());
+}</code></pre>
+            <a
+              class="code-source-link"
+              href="https://github.com/syifarizkaangeli/Warehouse-Inventory"
+              target="_blank"
+              rel="noopener"
+              >View full source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <!-- ================= SKILL: IOT / ARDUINO ================= -->
+
+        <article class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-tag">Hardware / IoT</span>
+            <h2>C++ (Arduino / ESP32)</h2>
+            <p>
+              Fingerprint sensors, LCDs, and WiFi-connected microcontrollers
+              talking to an API.
+            </p>
+          </div>
+
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-filename">absensi-siswa.ino</span>
+            </div>
+            <pre><code>#include &lt;WiFi.h&gt;
+#include &lt;HTTPClient.h&gt;
+#include &lt;Adafruit_Fingerprint.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+HardwareSerial fingerSerial(2);
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&amp;fingerSerial);
+
+void loop() {
+  if (millis() - lastEnrollCheck &gt; enrollCheckInterval) {
+    cekEnroll();
+    lastEnrollCheck = millis();
+  }
+
+  if (currentMode == MODE_ENROLL) {
+    prosesEnroll();
+  } else {
+    prosesAbsensi();
+  }
+
+  delay(50);
+}
+
+void prosesAbsensi() {
+  uint8_t p = finger.getImage();
+  if (p != FINGERPRINT_OK) return;
+
+  p = finger.image2Tz();
+  if (p != FINGERPRINT_OK) return;
+
+  p = finger.fingerSearch();
+  if (p != FINGERPRINT_OK) {
+    lcd.clear();
+    lcd.print("Jari Tidak dikenal");
+    delay(2000);
+    tampilStandby();
+    return;
+  }
+
+  kirimAbsensi(finger.fingerID);
+  delay(3000);
+  tampilStandby();
+}</code></pre>
+            <a
+              class="code-source-link"
+              href="https://github.com/syifarizkaangeli/Fingerprint-Absensi"
+              target="_blank"
+              rel="noopener"
+              >View full source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <div class="skills-cta">
+          <a href="work.html" class="skills-cta-button"
+            >See it running in my projects →</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>SYIFA RIZKA ANGELI'S</p>
+      </div>
+    </footer>
+
+    <audio id="bgMusic" loop autoplay muted preload="auto">
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -122,6 +122,11 @@ const CERTIFICATES = [
 
   /* build slides */
 
+  function thumbPath(file) {
+    const base = file.replace(/\.pdf$/i, "").replace(/ /g, "_");
+    return `certificates/thumbs/${encodeURIComponent(base)}-1.jpg`;
+  }
+
   const slides = CERTIFICATES.map((cert, index) => {
     const slide = document.createElement("div");
     slide.className = "cert-slide";
@@ -130,7 +135,7 @@ const CERTIFICATES = [
     slide.innerHTML = `
       <div class="cert-slide-inner">
         <div class="cert-slide-preview">
-          <div class="cert-slide-placeholder">PDF</div>
+          <img src="${thumbPath(cert.file)}" alt="${cert.title}" loading="lazy" />
           <div class="cert-slide-overlay"><span>VIEW CERTIFICATE ↗</span></div>
         </div>
         <div class="cert-slide-meta">
@@ -165,22 +170,6 @@ const CERTIFICATES = [
     return diff;
   }
 
-  function lazyLoadSlide(slide, index) {
-    const preview = slide.querySelector(".cert-slide-preview");
-    const iframe = preview.querySelector("iframe");
-    if (iframe) return;
-
-    const placeholder = preview.querySelector(".cert-slide-placeholder");
-    const cert = CERTIFICATES[index];
-
-    const el = document.createElement("iframe");
-    el.loading = "lazy";
-    el.title = cert.title;
-    el.src = `certificates/${encodeURIComponent(cert.file)}#toolbar=0&navpanes=0&scrollbar=0`;
-
-    preview.insertBefore(el, placeholder);
-  }
-
   function render() {
     slides.forEach((slide, index) => {
       const offset = offsetOf(index);
@@ -199,8 +188,6 @@ const CERTIFICATES = [
       slide.style.pointerEvents = abs > 3 ? "none" : "auto";
 
       slide.classList.toggle("is-active", offset === 0);
-
-      if (abs <= 2) lazyLoadSlide(slide, index);
     });
 
     dots.forEach((dot, index) => {
